@@ -80,9 +80,9 @@ TextField(
 
 ****[Verification](https://pub.dev/packages/flutter_verification_code)****
 
-**Email Verification:** Sending a verification email to confirm the user's email address.<br>
-**Phone Number Verification:** Sending an SMS with a verification code to confirm the user's phone number.<br>
-**Third-Party Authentication:** Using services like Firebase Authentication, OAuth, and others to verify users through third-party providers (Google, Facebook, etc...).
+**1) Email Verification:** Sending a verification email to confirm the user's email address.<br>
+**2) Phone Number Verification:** Sending an SMS with a verification code to confirm the user's phone number.<br>
+**3) Third-Party Authentication:** Using services like Firebase Authentication, OAuth, and others to verify users through third-party providers (Google, Facebook, etc...).
 
 ***Run this command:
 With Flutter:***
