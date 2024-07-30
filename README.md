@@ -16,7 +16,7 @@ Any design should be good in appearance and also in color which will please the 
  
 #### If you want to change the Flutter design, you have to manage the state.
 
-State manage flutter can be done in 2 ways.
+State manage flutter can be done in <b> <i>2 ways</i></b>.
 * state less widgets.
 * state full widgets.
 
@@ -80,8 +80,8 @@ TextField(
 ****[Verification](https://pub.dev/packages/flutter_verification_code)****
 
 **Email Verification:** Sending a verification email to confirm the user's email address.<br>
-**Phone Number Verification:** Sending an SMS with a verification code to confirm the user's phone number.
-**Third-Party Authentication:** Using services like Firebase Authentication, OAuth, and others to verify users through third-party providers (Google, Facebook, etc.).
+**Phone Number Verification:** Sending an SMS with a verification code to confirm the user's phone number.<br>
+**Third-Party Authentication:** Using services like Firebase Authentication, OAuth, and others to verify users through third-party providers (Google, Facebook, etc...).
 
 ```
 import 'package:firebase_auth/firebase_auth.dart';
