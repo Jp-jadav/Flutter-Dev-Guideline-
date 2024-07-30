@@ -136,8 +136,14 @@ Testing is one of the most important concept. App testing to check *bugs* and *e
 ---
 
 
-###  ****[App Size](https://docs.flutter.dev/ui)****
+###  ****[App Size](https://docs.flutter.dev/perf/app-size)****
 
 App size is important concept in Application.
 1) Consider using SVG files instead of PNGs or JPEGs.
 2) DevTools : It can be used to see a visual representation of app performance, network, memory, CPU and much more.
+
+***[Reducing app size](https://docs.flutter.dev/perf/app-size)***
+
+* Remove unused resources
+* Minimize resource imported from libraries
+* Compress PNG and JPEG files
