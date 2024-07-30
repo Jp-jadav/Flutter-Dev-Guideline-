@@ -1,8 +1,9 @@
 ## Dev Guideline
 
-### Todo
+#### Todo ####
 **Author**: Jaydip Jadav  
 **Date**: July 30, 2024
+
 ---
 
 ### Introduction
@@ -147,3 +148,4 @@ App size is important concept in Application.
 * Remove unused resources
 * Minimize resource imported from libraries
 * Compress PNG and JPEG files
+* Used SVG files
