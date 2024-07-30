@@ -31,11 +31,12 @@ The widgets whose state can be altered once they are built are called statefull 
 
 ---
 
-******Handling Error*********
-1> Compile-time errors
+###  ****[Handling errors](https://docs.flutter.dev/testing/errors)****
+
+* Compile-time errors
 These errors occur during the compilation of your Flutter code and typically involve syntax or typing mistakes.
 
-2>Runtime errors
+* Runtime errors
 Runtime errors occur while the application runs and can arise from various sources, such as null references, invalid data, or unexpected behavior.
 
 Flutter makes use of exceptions to handle runtime errors. You can use try-catch blocks to catch exceptions and perform specific actions based on the type of error encountered.
@@ -49,6 +50,7 @@ print(e); // error occurd this statement print.
 ---
 
 ****[Validating TextField](https://docs.flutter.dev/cookbook/forms/validation)****
+
 you need to validate the Text field. otherwise, it can be null or empty. This will cause save the null values into the database.
 
 ```
@@ -72,6 +74,27 @@ TextField(
   child: Text(' Submit'),
 )  
 ```
+---
+
+
+****[Verification](https://pub.dev/packages/flutter_verification_code)****
+
+**Email Verification:** Sending a verification email to confirm the user's email address.
+**Phone Number Verification:** Sending an SMS with a verification code to confirm the user's phone number.
+**Third-Party Authentication:** Using services like Firebase Authentication, OAuth, and others to verify users through third-party providers (Google, Facebook, etc.).
+'''
+import 'package:firebase_auth/firebase_auth.dart';
+
+void sendVerificationEmail() async {
+  User user = FirebaseAuth.instance.currentUser;
+
+  if (!user.emailVerified) {
+    await user.sendEmailVerification();
+    print('Verification email has been sent.');
+  }
+}
+'''
+
 ---
 
 *****Testing*******
