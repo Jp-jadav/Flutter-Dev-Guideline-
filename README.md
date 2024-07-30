@@ -9,6 +9,7 @@
 ### Introduction
 This is Documentation is Dev Guideline. With the help of document to developers can easily read and think.All information related to flutter development face has been improved in this document.
 
+--
 
 ### UI
 Any design has to be made complex.  So any client should have an interactive design.
@@ -29,6 +30,8 @@ The widgets whose state can not be altered once they are built are called statel
 =>The widgets whose state can be altered once they are built are called statefull Widgets.
 =>These states are mutable and can be changed multiple times in their lifetime.
 =>Classes that inherit “Stateful Widget” are immutable.
+
+---
 
 ******Handling Error*********
 1> Compile-time errors
