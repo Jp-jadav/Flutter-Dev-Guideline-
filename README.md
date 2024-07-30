@@ -123,21 +123,18 @@ await auth.verifyPhoneNumber(
 ```
 ---
 
-*****Testing*******
+###  ****[Testing](https://docs.flutter.dev/testing/overview)****
 
-Testing is one of the most important concept. App testing to check bugs and error in this app.
-1) Unit Testing
-=> it is the easiest method for testing an application or software.
-=>it tests a single function, method, or class.
-=>Execution Speed Fast.
+Testing is one of the most important concept. App testing to check *bugs* and *error* in this app.<br>
 
-2)Widget Testing
-=> it widget testing to tests  a single widget.
-=>Execution Speed Fast.
+* 1) Unit Testing
+= it is the easiest method for testing an application or software.it tests a <b>single function, method, or class.</b>Execution Speed Fast.
 
-3)Integration Testing
-=> In this testing involved both above testing method.
-=>Execution Speed Slow. 
+* 2)Widget Testing
+= it widget testing to tests  a <b>single widget.</b>Execution Speed Fast.
+
+* 3)Integration Testing
+= In this testing involved <b>both above testing method.</b>Execution Speed Slow. 
 
 ---
 
