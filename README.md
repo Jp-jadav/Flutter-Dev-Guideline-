@@ -18,15 +18,14 @@ Any design should be good in appearance and also in color which will please the 
 
 State manage flutter can be done in 2 ways.
 * state less widgets.
-* ****[state less widgets](https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html))****
-* ****[state full widgets](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)****
+* state full widgets.
 
   
-**1).state less widget**
+** ****[1) state less widgets](https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html))**** **
 
 The widgets whose state can not be altered once they are built are called stateless widgets. These widgets are immutable once they are built i.e. any amount of change in the variables, icons, buttons, or retrieving data can not change the state of the app.
 
-**2).state full widgets**
+** ****[2) state full widgets](https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html)**** **
 
 The widgets whose state can be altered once they are built are called statefull Widgets. These states are mutable and can be changed multiple times in their lifetime. Classes that inherit “Stateful Widget” are immutable.
 
