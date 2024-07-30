@@ -3,13 +3,11 @@
 ### Todo
 **Author**: Jaydip Jadav  
 **Date**: July 30, 2024
-
 ---
 
 ### Introduction
 This is Documentation is Dev Guideline. With the help of document to developers can easily read and think.All information related to flutter development face has been improved in this document.
-
---
+---
 
 ### UI
 Any design has to be made complex.  So any client should have an interactive design.
@@ -30,7 +28,6 @@ The widgets whose state can not be altered once they are built are called statel
 =>The widgets whose state can be altered once they are built are called statefull Widgets.
 =>These states are mutable and can be changed multiple times in their lifetime.
 =>Classes that inherit “Stateful Widget” are immutable.
-
 ---
 
 ******Handling Error*********
@@ -48,6 +45,7 @@ Some code....
 } catch(e) {
 print(e); // error occurd this statement print.
 ```
+---
 
 ****[Validating TextField](https://docs.flutter.dev/cookbook/forms/validation)****
 you need to validate the Text field. otherwise, it can be null or empty. This will cause save the null values into the database.
@@ -73,6 +71,7 @@ TextField(
   child: Text(' Submit'),
 )  
 ```
+---
 
 *****Testing*******
 
@@ -89,6 +88,7 @@ Testing is one of the most important concept. App testing to check bugs and erro
 3)Integration Testing
 => In this testing involved both above testing method.
 =>Execution Speed Slow. 
+---
 
 ***App Size****
 
