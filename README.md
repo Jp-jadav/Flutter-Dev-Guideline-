@@ -149,3 +149,10 @@ App size is important concept in Application.
 * Minimize resource imported from libraries
 * Compress PNG and JPEG files
 * Used SVG files
+
+***[Checking the total size](https://docs.flutter.dev/perf/app-size)***
+<b>Produce an upload package for your application:</b><br>
+```
+flutter build appbundle
+```
+
