@@ -20,7 +20,7 @@ State manage flutter can be done in 2 ways.
 * state less widgets.
 * state full widgets.
 
-** state less widget. **
+**state less widget.**
 
 The widgets whose state can not be altered once they are built are called stateless widgets. These widgets are immutable once they are built i.e. any amount of change in the variables, icons, buttons, or retrieving data can not change the state of the app.
 
