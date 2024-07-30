@@ -83,6 +83,19 @@ TextField(
 **Phone Number Verification:** Sending an SMS with a verification code to confirm the user's phone number.<br>
 **Third-Party Authentication:** Using services like Firebase Authentication, OAuth, and others to verify users through third-party providers (Google, Facebook, etc...).
 
+***Run this command:
+With Flutter:***
+
+```
+flutter pub add flutter_verification_code
+```
+***add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):***
+```
+dependencies:
+  flutter_verification_code: ^1.1.7
+```
+
+**Email Verification:**
 ```
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -95,7 +108,19 @@ void sendVerificationEmail() async {
   }
 }
 ```
+**Phone Number Verification:**
+```
+import 'package:firebase_auth/firebase_auth.dart';
 
+FirebaseAuth auth = FirebaseAuth.instance;
+await auth.verifyPhoneNumber(
+  phoneNumber: '+44 7123 123 456',
+  verificationCompleted: (PhoneAuthCredential credential) async {
+    // ANDROID ONLY!
+
+    // Sign the user in (or link) with the auto-generated credential
+ 
+```
 ---
 
 *****Testing*******
