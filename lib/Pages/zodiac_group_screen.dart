@@ -22,10 +22,16 @@ class _ZodiacGroupScreenState extends State<ZodiacGroupScreen> {
     loadZodiacSigns();
   }
 
+  // get zodiac sign
   loadZodiacSigns() async {
     setState(() {
       zodiacSigns = dbHelper!.getDistinctZodiacSigns();
     });
+  }
+
+  // Data Refresh
+  void refreshData() {
+    loadZodiacSigns();
   }
 
   @override
@@ -48,17 +54,24 @@ class _ZodiacGroupScreenState extends State<ZodiacGroupScreen> {
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               final zodiacSign = snapshot.data![index];
-              return ListTile(
-                title: Text(zodiacSign),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          UsersByZodiacScreen(zodiacSign: zodiacSign),
-                    ),
-                  );
-                },
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Card(
+                  elevation: 20,
+                  color: Colors.white70,
+                  child: ListTile(
+                    title: Text(zodiacSign),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UsersByZodiacScreen(zodiacSign: zodiacSign),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               );
             },
           );
@@ -74,7 +87,7 @@ class _ZodiacGroupScreenState extends State<ZodiacGroupScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MyHomePage(),
+                        builder: (context) => const AllUsersScreen(),
                       ));
                 },
                 child: const Text("Show All Users")),
@@ -84,7 +97,8 @@ class _ZodiacGroupScreenState extends State<ZodiacGroupScreen> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const RegistrationScreen(),
+                    builder: (context) =>
+                        RegistrationScreen(onSave: refreshData),
                   ));
             },
             child: const Icon(Icons.add),

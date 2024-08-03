@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:path/path.dart';
@@ -10,16 +9,16 @@ import 'package:zodiac/Models/registration.dart';
 class DatabaseHelper {
   static Database? _database;
 
+  // check database create or not
   Future<Database> get database async {
     if (_database != null) {
-      log("jjj : $_database");
       return _database!;
     }
     _database = await initDatabase();
-    log("kkk : $_database");
     return _database!;
   }
 
+  // Create New Database
   initDatabase() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, 'registration.db');
@@ -27,6 +26,7 @@ class DatabaseHelper {
     return db;
   }
 
+  // Create Table
   FutureOr<void> _onCreate(Database db, int version) async {
     await db.execute('''
   CREATE TABLE registration(
@@ -41,19 +41,14 @@ class DatabaseHelper {
   ''');
   }
 
+// Insert New Users Methods
   Future<Registration> insert(Registration registrationModel) async {
     var dbClient = await database;
     await dbClient.insert('registration', registrationModel.toMap());
     return registrationModel;
   }
 
-  Future<bool> checkTableExists(String tableName) async {
-    Database db = await database;
-    List<Map<String, dynamic>> result = await db.rawQuery(
-        "SELECT name FROM sqlite_master WHERE type='table' AND name='$tableName';");
-    return result.isNotEmpty;
-  }
-
+// Get All Userdata
   Future<List<Registration>> getRegistrationList() async {
     var dbClient = await database;
     final List<Map<String, Object?>> queryResult =
@@ -62,7 +57,7 @@ class DatabaseHelper {
     return queryResult.map((e) => Registration.fromMap(e)).toList();
   }
 
-  /////////
+  //get user by zodiac name
   Future<List<Registration>> getUsersByZodiacSign(String zodiacSign) async {
     var dbClient = await database;
     final List<Map<String, Object?>> queryResult = await dbClient.query(
@@ -74,6 +69,7 @@ class DatabaseHelper {
     return queryResult.map((e) => Registration.fromMap(e)).toList();
   }
 
+  // get zodiac sign
   Future<List<String>> getDistinctZodiacSigns() async {
     var dbClient = await database;
     final List<Map<String, dynamic>> result = await dbClient.rawQuery(

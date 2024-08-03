@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zodiac/DBHelper/db_handler.dart';
-import 'package:zodiac/Models/registration.dart';
-import 'package:zodiac/Pages/registration_screen.dart';
 import 'package:zodiac/Pages/zodiac_group_screen.dart';
 
 void main() {

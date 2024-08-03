@@ -22,6 +22,7 @@ class _UsersByZodiacScreenState extends State<UsersByZodiacScreen> {
     loadUsers();
   }
 
+  // User Get by zodiacSign
   loadUsers() async {
     setState(() {
       usersByZodiac = dbHelper!.getUsersByZodiacSign(widget.zodiacSign);
@@ -49,15 +50,21 @@ class _UsersByZodiacScreenState extends State<UsersByZodiacScreen> {
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               final user = snapshot.data![index];
-              return ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(user.zodiacSignImage),
-                ),
-                title: Text(user.name),
-                subtitle: Text('DOB: ${user.dateOfBirth}'
+              return Card(
+                elevation: 10,
+                margin: const EdgeInsets.all(10),
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(user.zodiacSignImage),
+                  ),
+                  title: Text('Name: ${user.name}',style: const TextStyle(fontSize: 15)),
+                  subtitle: Text(
+                    'DOB: ${user.dateOfBirth}'
                     '\nMobile: ${user.mobileNumber}'
                     '\nZodiac: ${user.zodiacSign}'
-                    '\nGender: ${user.gender}'),
+                    '\nGender: ${user.gender}',style: const TextStyle(fontSize: 15),
+                  ),
+                ),
               );
             },
           );

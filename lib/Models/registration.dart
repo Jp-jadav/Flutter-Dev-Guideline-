@@ -1,5 +1,3 @@
-import 'package:zodiac/Models/registration.dart';
-
 class Registration {
   int? id;
   final String name;

@@ -4,7 +4,9 @@ import 'package:zodiac/DBHelper/db_handler.dart';
 import 'package:zodiac/Models/registration.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({super.key});
+  final VoidCallback? onSave;
+
+  const RegistrationScreen({super.key, this.onSave});
 
   @override
   State<RegistrationScreen> createState() => _RegistrationScreenState();
@@ -12,24 +14,16 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _dobController = TextEditingController();
-  final TextEditingController _mobileController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _dobController = TextEditingController();
+  final _mobileController = TextEditingController();
   String? _gender;
-  bool _tableExists = false;
   DatabaseHelper? dbHelper;
-  late Future<List<Registration>> registrationsList;
 
   @override
   void initState() {
     super.initState();
     dbHelper = DatabaseHelper();
-    loadData();
-    _checkTable();
-  }
-
-  loadData() async {
-    registrationsList = dbHelper!.getRegistrationList();
   }
 
   @override
@@ -40,6 +34,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     super.dispose();
   }
 
+  // Select Date
   Future<void> _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
@@ -54,6 +49,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
+  // CalculateZodiac into Date wise
   String _calculateZodiac(DateTime date) {
     int day = date.day;
     int month = date.month;
@@ -87,6 +83,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
+  // get Zodiac image into zodiacSign sign
   String _getZodiacImage(String zodiacSign) {
     switch (zodiacSign) {
       case "Aquarius":
@@ -118,6 +115,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
+  // Submit Button Click to perform this Function
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       DateTime dob = DateFormat('yyyy-MM-dd').parse(_dobController.text);
@@ -132,33 +130,27 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           zodiacSign: zodiacSign,
           zodiacSignImage: zodiacSignImage);
 
+      // insert data in database
       await dbHelper!.insert(registration).then(
         (value) {
-          setState(() {
-            registrationsList = dbHelper!.getRegistrationList();
-          });
-
-          return ScaffoldMessenger.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Registration saved!")),
           );
+
+          // In this call to previous screen refresh
+          widget.onSave?.call();
+
+          // Clear the form
+          _formKey.currentState!.reset();
+          _nameController.clear();
+          _dobController.clear();
+          _mobileController.clear();
+          setState(() {
+            _gender = null;
+          });
+          Navigator.pop(context);
         },
       );
-
-      print("Name: ${_nameController.text}");
-      print("Date of Birth: ${_dobController.text}");
-      print("Zodiac Sign: $zodiacSign");
-      print("Mobile Number: ${_mobileController.text}");
-      print("Gender: $_gender");
-
-      // Clear the form
-      _formKey.currentState!.reset();
-      _nameController.clear();
-      _dobController.clear();
-      _mobileController.clear();
-      setState(() {
-        _gender = null;
-      });
-      Navigator.pop(context);
     }
   }
 
@@ -183,7 +175,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 _buildGenderField(),
                 const SizedBox(height: 20),
                 _buildSubmitButton(),
-                _checkTableExistsOrNot(),
               ],
             ),
           ),
@@ -315,20 +306,5 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
-  }
-
-  Widget _checkTableExistsOrNot() {
-    return Center(
-      child: _tableExists
-          ? const Text("Registration table exists.")
-          : const Text("Registration table does not exist."),
-    );
-  }
-
-  Future<void> _checkTable() async {
-    bool exists = await dbHelper!.checkTableExists('registration');
-    setState(() {
-      _tableExists = exists;
-    });
   }
 }
